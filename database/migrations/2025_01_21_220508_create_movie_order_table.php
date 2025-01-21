@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('movie_order', function (Blueprint $table) {
             $table->id();
-            $table->decimal('total', 10, 2);
+            $table->foreignId('movie_id')->constrained();
+            $table->foreignId('order_id')->constrained();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('movie_order');
     }
 };
