@@ -10,10 +10,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  */
 class Order extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = ['total'];
 
     protected $casts = [
         'total' => 'float',
+        'deleted_at' => 'datetime',
     ];
 
     public function movies(): BelongsToMany
