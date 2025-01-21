@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\MovieTag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -17,7 +18,7 @@ class Movie extends Model
     protected $fillable = ['title', 'base_price', 'tag'];
 
     protected $casts = [
-        'tag' => 'string',
+        'tag' => MovieTag::class,
         'base_price' => 'float',
     ];
 
