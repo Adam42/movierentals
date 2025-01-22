@@ -44,6 +44,12 @@ class MovieSeeder extends Seeder
                 'base_price' => 250,
                 'tag' => null,
             ],
+            [
+                'title' => 'The Program', // How do we handle a movie at its lowest price under the radar?
+                'base_price' => .01,
+                'tag' => MovieTag::UNDER_RADAR,
+            ],
+
         ];
 
         foreach ($movies as $movie) {
