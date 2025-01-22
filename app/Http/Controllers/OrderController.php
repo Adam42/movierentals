@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Movie;
 use App\Models\Order;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Collection;
+use App\Http\Requests\CreateOrderRequest;
 
 class OrderController extends Controller
 {

@@ -27,4 +27,13 @@ class Movie extends Model
         return $this->belongsToMany(Order::class)
             ->withTimestamps();
     }
+
+    public function getCalculatedPrice(): float
+    {
+        if (! $this->tag) {
+            return $this->base_price;
+        }
+
+        return $this->base_price * $this->tag->getMultiplier();
+    }
 }
