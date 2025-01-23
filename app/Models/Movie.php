@@ -28,12 +28,22 @@ class Movie extends Model
             ->withTimestamps();
     }
 
+    /**
+     * A movie can have an optional tag which can alter the movie's price.
+     * */
     public function getCalculatedPrice(): float
     {
+        // If a movie is priced at .01 and has a tag
+        // we want to ensure the discounted price is at least
+        // this minimum price.
+        $minPrice = 0.01;
+
         if (! $this->tag) {
-            return $this->base_price;
+            return max($this->base_price, $minPrice);
         }
 
-        return $this->base_price * $this->tag->getMultiplier();
+        $calculatedPrice = $this->base_price * $this->tag->getMultiplier();
+
+        return max($calculatedPrice, $minPrice);
     }
 }
