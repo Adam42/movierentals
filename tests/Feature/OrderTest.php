@@ -72,7 +72,6 @@ class OrderTest extends TestCase
 
     public function test_can_create_order_with_multiple_movies(): void
     {
-        // Create movies and collect them into a Collection
         $movies = collect([
             Movie::create([
                 'title' => 'Regular Movie',

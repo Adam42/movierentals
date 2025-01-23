@@ -12,8 +12,10 @@ class PricingService
      */
     public function calculateTotal(Collection $movies): float
     {
-        return $movies->sum(function (Movie $movie) {
+        $total = $movies->sum(function (Movie $movie) {
             return $movie->getCalculatedPrice();
         });
+
+        return round($total, 2);
     }
 }
