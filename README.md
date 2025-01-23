@@ -1,4 +1,4 @@
-## Stepstone Movie Rentals
+## Movie Rentals
 
 This mini-app allows users to rent movies via API calls. Some movies may have a tag applied to indicate that they are particualrly popular, in which case they have an upcharge applied, or have a discount applied.
 
@@ -53,4 +53,15 @@ The above request should return back the below response using the seeded test da
 
 ```
 {"order":{"total":33.9715,"updated_at":"2025-01-23T00:12:59.000000Z","created_at":"2025-01-23T00:12:59.000000Z","id":6,"movies":[{"id":1,"title":"The Matrix","base_price":9.99,"tag":"trending_now","created_at":"2025-01-21T23:53:33.000000Z","updated_at":"2025-01-21T23:53:33.000000Z","deleted_at":null,"pivot":{"order_id":6,"movie_id":1,"created_at":"2025-01-23T00:12:59.000000Z","updated_at":"2025-01-23T00:12:59.000000Z"}},{"id":2,"title":"Interstellar","base_price":12.99,"tag":null,"created_at":"2025-01-21T23:53:33.000000Z","updated_at":"2025-01-21T23:53:33.000000Z","deleted_at":null,"pivot":{"order_id":6,"movie_id":2,"created_at":"2025-01-23T00:12:59.000000Z","updated_at":"2025-01-23T00:12:59.000000Z"}},{"id":3,"title":"The Shawshank Redemption","base_price":14.99,"tag":"under_radar","created_at":"2025-01-21T23:53:33.000000Z","updated_at":"2025-01-21T23:53:33.000000Z","deleted_at":null,"pivot":{"order_id":6,"movie_id":3,"created_at":"2025-01-23T00:12:59.000000Z","updated_at":"2025-01-23T00:12:59.000000Z"}}]}}
+```
+
+
+### Running tests
+
+There exist some basic tests in the tests directory. These tests do rely on the database and drop and create a new database for the tests.
+
+To run tests:
+
+```
+php artisan test
 ```
