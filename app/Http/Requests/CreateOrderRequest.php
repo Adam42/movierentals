@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class CreateOrderRequest extends FormRequest
 {
@@ -16,7 +18,21 @@ class CreateOrderRequest extends FormRequest
 
         return [
             'movie_ids' => ['required', 'array', 'min:1'],
+            'movie_ids.*' => ['required', 'exists:movies,id'],
         ];
 
+    }
+
+    /**
+     * Handle a failed validation attempt.
+     */
+    protected function failedValidation(Validator $validator): void
+    {
+        throw new HttpResponseException(
+            response()->json([
+                'error' => 'Validation failed',
+                'errors' => $validator->errors(),
+            ], 422)
+        );
     }
 }
