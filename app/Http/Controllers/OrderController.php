@@ -6,7 +6,6 @@ use App\Models\Movie;
 use App\Models\Order;
 use App\Services\PricingService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Collection;
 use App\Http\Requests\CreateOrderRequest;
 
 class OrderController extends Controller
@@ -29,12 +28,5 @@ class OrderController extends Controller
         return response()->json([
             'order' => $order->load('movies'),
         ], 201);
-    }
-
-    private function calculateTotal(Collection $movies): float
-    {
-        return $movies->sum(function (Movie $movie) {
-            return $movie->getCalculatedPrice();
-        });
     }
 }
